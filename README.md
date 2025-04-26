@@ -1,6 +1,9 @@
 ## Getting Started
 
-Activate the virtual environment from the project root using `source .venv/bin/activate`
+Ensure `pipenv` is installed on your machine with `pip3 install pipenv`.
+
+Activate the virtual environment from the project root `legal_funding_app` using `pipenv shell`.
+
 Run the application in your local server using `python3 manage.py runserver`
 
 ### Setting up the database:

@@ -2,7 +2,7 @@
 
 Ensure `pipenv` is installed on your machine with `pip3 install pipenv`.
 
-Activate the virtual environment from the project root `legal_funding_app` using `pipenv shell`.
+Activate the virtual environment from the project root `bug_tracker` using `pipenv shell`.
 
 Run the application in your local server using `python3 manage.py runserver`
 
@@ -23,7 +23,7 @@ Run the application in your local server using `python3 manage.py runserver`
    ```
 2. Navigate into the project directory
    ```sh
-   cd legal_help_app 
+   cd bug_tracker 
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

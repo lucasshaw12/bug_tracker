@@ -1,10 +1,12 @@
 ## Getting Started
 
+Install Python3 onto your machine using `brew install python`.
+
 Ensure `pipenv` is installed on your machine with `pip3 install pipenv`.
 
-Activate the virtual environment from the project root `bug_tracker` using `pipenv shell`.
+To run the application from your local machine. From the `bug_tracker` root directory, enter the command `pipenv install -r requirements.txt`. This will install the required dependencies that are needed to run the application.
 
-Run the application in your local server using `python3 manage.py runserver`
+Run the application in your local server using `python3 manage.py runserver`.
 
 ### Setting up the database:
 

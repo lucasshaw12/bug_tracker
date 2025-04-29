@@ -8,8 +8,9 @@ To run the application from your local machine. From the `bug_tracker` root dire
 
 Run the application in your local server using `python3 manage.py runserver`.
 
-### Setting up the database:
+### Setting up and accessing the database:
 
+To access the Administrator database, visit `127.0.0.1:8000/admin/`. You can then create your own superuser starting with the command `python3 manage.py createsuperuser`. Use the credentials to access the database admin dashboard.
 
 ### Logging in
 

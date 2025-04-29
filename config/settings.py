@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'bug_tracker',
+    'bug_tracker.apps.BugTrackerConfig',
 ]
 
 MIDDLEWARE = [

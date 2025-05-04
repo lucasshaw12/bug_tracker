@@ -25,11 +25,11 @@ All required dependencies should be install when the Getting Started instruction
 
 1. Clone the repo
    ```sh
-   git clone 
+   git clone
    ```
 2. Navigate into the project directory
    ```sh
-   cd bug_tracker 
+   cd bug_tracker
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -38,8 +38,8 @@ All required dependencies should be install when the Getting Started instruction
 
 ## Usage
 
-### Signing up 
-Sign up to create a user before you can interact with the application. After clicking 'sign up' an authentication token will be displayed within your terminal. Visit the given url to submit the token to verify your user. You MUST do this before you can sign in. 
+### Signing up
+Sign up to create a user before you can interact with the application. After clicking 'sign up' an authentication token will be displayed within your terminal. Visit the given url to submit the token to verify your user. You MUST do this before you can sign in.
 
 ### Custom User model
 Custom user models have been implemented within the application. The purpose of which is to ensure that if any amendments are required to the user model later in the applications lifecycle, this is easier with a custom user model. It is recommended within the Django documentation here - https://docs.djangoproject.com/en/5.1/topics/auth/customizing/#using-a-custom-user-model-when-starting-a-project.
@@ -48,11 +48,13 @@ Users in this application needs are proxies for staff members within a software 
 
 
 ### Testing and test coverage
-- 
- 
-- 
+-
+
+-
 
 ### Linting and Style
-- 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+[Black](https://github.com/psf/black) and [Djlint](https://github.com/djlint/djlint) for HTML are used for consistency across all files and to ensure formatting standards are met. Then using a pre commit Git hook to run all formatting packages ensures they won't be forgotten.
 
+Pre-commit hook guide found [here](https://dev.to/earthcomfy/django-code-formatting-and-linting-made-easy-a-step-by-step-pre-commit-hook-tutorial-592f#black)
+-
+<p align="right">(<a href="#readme-top">back to top</a>)</p>

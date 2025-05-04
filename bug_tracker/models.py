@@ -3,6 +3,7 @@ from django.urls import reverse
 
 from django.conf import settings
 
+
 # Create your models here.
 class Bug(models.Model):
     STATUS_CHOICES = {
@@ -18,7 +19,9 @@ class Bug(models.Model):
     application_name = models.CharField(max_length=40)
     expected_behaviour = models.TextField()
     actual_behaviour = models.TextField()
-    user_assigned_to = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True) # settings.AUTH_USER_MODEL is used for the Custom User
+    user_assigned_to = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True
+    )  # settings.AUTH_USER_MODEL is used for the Custom User
     completion_status = models.CharField(max_length=40, choices=STATUS_CHOICES)
     complexity_level = models.PositiveSmallIntegerField()
     severity_level = models.PositiveSmallIntegerField()

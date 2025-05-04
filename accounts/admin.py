@@ -4,6 +4,7 @@ from django.contrib.auth.admin import UserAdmin
 from .forms import CustomUserCreationForm, CustomUserChangeForm
 from .models import CustomUser
 
+
 # Extend the existing UserAdmin class to use the new CustomUser model.
 class CustomUserAdmin(UserAdmin):
     add_form = CustomUserCreationForm
@@ -11,7 +12,15 @@ class CustomUserAdmin(UserAdmin):
     model = CustomUser
 
     # What fields to display in list view
-    list_display = ("username", "email", "first_name", "last_name", "user_role", "team_name", "num_bugs_assigned")
+    list_display = (
+        "username",
+        "email",
+        "first_name",
+        "last_name",
+        "user_role",
+        "team_name",
+        "num_bugs_assigned",
+    )
 
     # What fields to use in the user edit form
     fieldsets = UserAdmin.fieldsets + (
@@ -22,5 +31,6 @@ class CustomUserAdmin(UserAdmin):
     add_fieldsets = UserAdmin.add_fieldsets + (
         ("Extra Info", {"fields": ("user_role", "team_name", "num_bugs_assigned")}),
     )
+
 
 admin.site.register(CustomUser, CustomUserAdmin)

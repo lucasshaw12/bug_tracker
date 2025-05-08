@@ -48,12 +48,13 @@ Users in this application needs are proxies for staff members within a software 
 
 
 ### Testing and test coverage
--
+Run all tests with the command `python3 manage.py test`.
 
 -
 
 ### Linting and Style
 [Black](https://github.com/psf/black) and [Djlint](https://github.com/djlint/djlint) for HTML are used for consistency across all files and to ensure formatting standards are met. Then using a pre commit Git hook to run all formatting packages ensures they won't be forgotten.
+To run black in local development use the command `black .` which formats all files. The command `djlint .` performs linting on all files.
 
 Pre-commit hook guide found [here](https://dev.to/earthcomfy/django-code-formatting-and-linting-made-easy-a-step-by-step-pre-commit-hook-tutorial-592f#black)
 -

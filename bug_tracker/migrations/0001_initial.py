@@ -15,20 +15,49 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Bug',
+            name="Bug",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('bug_title', models.CharField(max_length=40)),
-                ('bug_description', models.TextField()),
-                ('application_name', models.CharField(max_length=40)),
-                ('expected_behaviour', models.TextField()),
-                ('actual_behaviour', models.TextField()),
-                ('completion_status', models.CharField(choices=[('In progress', 'In progress'), ('Closed without fix', 'Closed without fix'), ('Not started', 'Not started'), ('Fixed', 'Fixed'), ('Under peer review', 'Under peer review'), ('Blocked', 'Blocked')], max_length=40)),
-                ('complexity_level', models.PositiveSmallIntegerField()),
-                ('severity_level', models.PositiveSmallIntegerField()),
-                ('date_raised', models.DateTimeField(auto_now_add=True)),
-                ('completed_on', models.DateTimeField(auto_now=True)),
-                ('user_assigned_to', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("bug_title", models.CharField(max_length=40)),
+                ("bug_description", models.TextField()),
+                ("application_name", models.CharField(max_length=40)),
+                ("expected_behaviour", models.TextField()),
+                ("actual_behaviour", models.TextField()),
+                (
+                    "completion_status",
+                    models.CharField(
+                        choices=[
+                            ("In progress", "In progress"),
+                            ("Closed without fix", "Closed without fix"),
+                            ("Not started", "Not started"),
+                            ("Fixed", "Fixed"),
+                            ("Under peer review", "Under peer review"),
+                            ("Blocked", "Blocked"),
+                        ],
+                        max_length=40,
+                    ),
+                ),
+                ("complexity_level", models.PositiveSmallIntegerField()),
+                ("severity_level", models.PositiveSmallIntegerField()),
+                ("date_raised", models.DateTimeField(auto_now_add=True)),
+                ("completed_on", models.DateTimeField(auto_now=True)),
+                (
+                    "user_assigned_to",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
     ]

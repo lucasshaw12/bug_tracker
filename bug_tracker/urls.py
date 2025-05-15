@@ -1,4 +1,4 @@
 from django.urls import path
-from .views import DashboardPageView
+from .views import BugListView
 
-urlpatterns = [path("", DashboardPageView.as_view(), name="dashboard")]
+urlpatterns = [path("", BugListView.as_view(), name="dashboard")]

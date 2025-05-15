@@ -1,6 +1,9 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView
+from django.views.generic import ListView
+
+from .models import Bug
 
 
-class DashboardPageView(TemplateView):
+class BugListView(ListView):
+    model = Bug
     template_name = "dashboard.html"

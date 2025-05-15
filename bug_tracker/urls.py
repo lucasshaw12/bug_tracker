@@ -1,4 +1,4 @@
 from django.urls import path
-from .views import BugTrackerListView
+from .views import DashboardPageView
 
-urlpatterns = [path("", BugTrackerListView.as_view(), name="home")]
+urlpatterns = [path("", DashboardPageView.as_view(), name="dashboard")]

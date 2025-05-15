@@ -58,4 +58,11 @@ To run black in local development use the command `black .` which formats all fi
 
 Pre-commit hook guide found [here](https://dev.to/earthcomfy/django-code-formatting-and-linting-made-easy-a-step-by-step-pre-commit-hook-tutorial-592f#black)
 -
+
+
+### Libraries
+Bootstrap is a css framework to improve the front-end of a Web Application. It provides HTML, CSS and Javascript templates for an easier way to build applications with a focus on responsive design. This application uses the content delivery network (CDN) provided by Bootstrap. CDN's allow for the application to connect to the CDN network of multiple servers, rather than hosting all the static files within the application itself on a single server. This makes it easy to remain updated and ensures reliability if there was an error with the service of the otherwise static files. The use of mulitple servers increase the speed of the request, speeding up the web page response to the client.
+
+Instead of the default forms used within Django. [Crispy forms](https://github.com/django-crispy-forms/django-crispy-forms?tab=readme-ov-file) is a more conventient way to produce and style forms, along with its Bootstrap support. Default Django forms are less functionally equipped and offer less styling. Crispy forms help maintain DRY principles. Simply adding `{% load crispy_forms_tags %}` to the start of the template loads in the template tag library. Then swap out `.as_p` from the form context variable to `|crispy`.
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

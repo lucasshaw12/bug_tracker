@@ -1,9 +1,8 @@
-from django.contrib.auth import get_user_model
-from django.test import TestCase, SimpleTestCase
+from django.test import TestCase
 from django.urls import reverse
 
 
-class DashboardPageTests(SimpleTestCase):
+class DashboardPageTests(TestCase):
     def test_url_exists(self):
         response = self.client.get("/")
         self.assertEqual(response.status_code, 200)

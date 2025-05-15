@@ -12,6 +12,8 @@
                         <div class="card-header">
                             <strong>{{ bug.bug_title }}</strong>
                             <span class="badge bg-primary float-end">{{ bug.completion_status }}</span>
+                            <a href="{% url 'bug_edit' bug.pk %}"
+                               class="btn btn-sm btn-secondary ms-2">Edit</a>
                         </div>
                         <div class="card-body">
                             <p>

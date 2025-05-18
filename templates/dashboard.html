@@ -8,7 +8,7 @@
         <div class="row">
             {% for bug in bug_list %}
                 <div class="col-sm-6 py-3">
-                    <div class="card h-100">
+                    <div class="card h-100 {{ bug.status_class }}">
                         <div class="card-header">
                             <strong>{{ bug.bug_title }}</strong>
                             <span class="badge bg-primary float-end">{{ bug.completion_status }}</span>
@@ -37,9 +37,27 @@
                             <p>
                                 <strong>Raised on:</strong> {{ bug.date_raised }}
                             </p>
-                            <p>
-                                <strong>Completed on:</strong> {{ bug.completed_on }}
-                            </p>
+                            {% if bug.completion_status == 'Fixed' or bug.completion_status == 'Closed without fix' %}
+                                <p>
+                                    <strong>Completed on:</strong> {{ bug.completed_on }}
+                                </p>
+                            {% endif %}
+                        </div>
+                        <div class="card-footer">
+                            {% if bug.completion_status != 'Fixed' and bug.completion_status != 'Closed without fix' %}
+                                <form action="{% url 'bug_complete' bug.pk %}"
+                                      method="post"
+                                      style="display:inline">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-sm btn-success">Complete Bug</button>
+                                </form>
+                                <form action="{% url 'bug_close' bug.pk %}"
+                                      method="post"
+                                      style="display:inline">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-sm btn-danger ms-2">Close Bug</button>
+                                </form>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

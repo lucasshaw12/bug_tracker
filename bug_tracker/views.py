@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import ListView, UpdateView, CreateView
+from django.views.generic import ListView, UpdateView, CreateView, DeleteView
 from django.shortcuts import get_object_or_404, redirect
 from django.utils import timezone
 from django.views import View
@@ -36,6 +36,11 @@ class BugUpdateView(UpdateView):
     template_name = "bugs/bug_form.html"
     success_url = reverse_lazy("dashboard")
 
+
+class BugDeleteView(DeleteView):
+        model = Bug
+        template_name = "bugs/bug_confirm_delete.html"
+        success_url = reverse_lazy("dashboard")
 
 class BugCompleteView(View):
     def post(self, request, pk):

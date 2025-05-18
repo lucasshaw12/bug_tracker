@@ -33,3 +33,9 @@ class Bug(models.Model):
 
     def get_absolute_url(self):
         return reverse("bug_detail", kwargs={"pk": self.pk})
+
+    def status_class(self):
+        return {
+            "Fixed": "bg-success text-white",
+            "Closed without fix": "bg-secondary text-white",
+        }.get(self.completion_status, "")

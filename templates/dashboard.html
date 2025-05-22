@@ -61,7 +61,7 @@
                                 </form>
                             {% endif %}
 
-                            <a href="{% url 'bug_delete' bug.pk %}" class="float-right btn {{ bug.is_complete_status_class}}">
+                            <a href="{% url 'bug_delete' bug.pk %}" class="btn btn-sm {{ bug.is_complete_status_class }}">
                                 Delete Bug
                             </a>
                         </div>

@@ -32,16 +32,18 @@ class Bug(models.Model):
         return self.bug_title
 
     def status_class(self):
-        return {
-            "Fixed": "bg-success text-white",
-            "Closed without fix": "bg-secondary text-white",
-        }.get(self.completion_status, "")
+        if self.completion_status == "Fixed":
+            return "bg-success text-white"
+        elif self.completion_status == "Closed without fix":
+            return "bg-secondary text-white"
+        else:
+            return ""
 
     def is_complete_status_class(self):
-        return {
-            "Fixed": "text-white btn-outline-light",
-            "Closed without fix": "text-white btn-outline-light",
-        }.get(self.completion_status, "")
+        if self.completion_status in ("Fixed", "Closed without fix"):
+            return "text-white btn-outline-light"
+        else:
+            return "text-danger btn-outline-danger"
 
     def is_closed(self):
         if (

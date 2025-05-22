@@ -38,9 +38,10 @@ class BugUpdateView(UpdateView):
 
 
 class BugDeleteView(DeleteView):
-        model = Bug
-        template_name = "bugs/bug_confirm_delete.html"
-        success_url = reverse_lazy("dashboard")
+    model = Bug
+    template_name = "bugs/bug_confirm_delete.html"
+    success_url = reverse_lazy("dashboard")
+
 
 class BugCompleteView(View):
     def post(self, request, pk):

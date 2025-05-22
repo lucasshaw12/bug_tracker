@@ -10,10 +10,12 @@
                 <div class="col-sm-6 py-3">
                     <div class="card h-100 {{ bug.status_class }}">
                         <div class="card-header">
-                            <strong>{{ bug.bug_title }}</strong>
-                            <span class="badge bg-primary float-end">{{ bug.completion_status }}</span>
-                            <a href="{% url 'bug_edit' bug.pk %}"
-                               class="btn btn-sm btn-secondary ms-2">Edit</a>
+                            <strong class="mt-1">{{ bug.bug_title }}</strong>
+                            <span class="badge bg-primary text-white p-1">{{ bug.completion_status }}</span>
+                            {% if not bug.is_closed %}
+                                <a href="{% url 'bug_edit' bug.pk %}"
+                               class="btn btn-link ms-2">Edit</a>
+                            {% endif %}
                         </div>
                         <div class="card-body">
                             <p>
@@ -55,11 +57,11 @@
                                       method="post"
                                       style="display:inline">
                                     {% csrf_token %}
-                                    <button type="submit" class="btn btn-sm btn-danger ms-2">Close Bug</button>
+                                    <button type="submit" class="btn btn-sm btn-secondary ms-2">Close Bug</button>
                                 </form>
                             {% endif %}
 
-                            <a href="{% url 'bug_delete' bug.pk %}" class="btn btn-sm btn-outline-danger ms-2">
+                            <a href="{% url 'bug_delete' bug.pk %}" class="float-right btn {{ bug.is_complete_status_class}}">
                                 Delete Bug
                             </a>
                         </div>

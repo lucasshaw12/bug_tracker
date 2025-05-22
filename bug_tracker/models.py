@@ -31,11 +31,21 @@ class Bug(models.Model):
     def __str__(self):
         return self.bug_title
 
-    def get_absolute_url(self):
-        return reverse("bug_detail", kwargs={"pk": self.pk})
-
     def status_class(self):
         return {
             "Fixed": "bg-success text-white",
             "Closed without fix": "bg-secondary text-white",
         }.get(self.completion_status, "")
+
+    def is_complete_status_class(self):
+        return {
+            "Fixed": "text-white btn-outline-light",
+            "Closed without fix": "text-white btn-outline-light",
+        }.get(self.completion_status, "")
+
+    def is_closed(self):
+        if (
+            self.completion_status == "Fixed"
+            or self.completion_status == "Closed without fix"
+        ):
+            return True

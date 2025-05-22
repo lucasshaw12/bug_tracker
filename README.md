@@ -52,6 +52,7 @@ Bugs are added using the "Add bug" link in the navigation bar. Once created the 
 
 Whenever a bug is completed successfully, the `complete bug` button should be selected. This will highlight the whole card in green, change the badge to `fixed` and show the `completed_on` date and time. Similarly, if the bug is closed without fixing it, the `close bug` button should be selected and the badge will state `closed without fix`. The bug card will be greyed and will also include the `completed_on` details.
 
+If a bug is closed from either being `completed` or `Closed without fix`, it is not longer editable.
 
 ### Testing and test coverage
 Run all tests with the command `python3 manage.py test`.

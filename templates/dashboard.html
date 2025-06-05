@@ -60,8 +60,10 @@
                                     <button type="submit" class="btn btn-sm btn-secondary ms-2">Close Bug</button>
                                 </form>
                             {% endif %}
-                            <a href="{% url 'bug_delete' bug.pk %}"
-                               class="btn btn-sm {{ bug.is_complete_status_class }}">Delete Bug</a>
+                            {% if user.is_superuser %}
+                                <a href="{% url 'bug_delete' bug.pk %}"
+                                   class="btn btn-sm {{ bug.is_complete_status_class }}">Delete Bug</a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

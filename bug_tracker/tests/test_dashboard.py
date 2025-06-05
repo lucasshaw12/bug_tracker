@@ -38,7 +38,40 @@ class DashboardPageTests(TestCase):
         response = self.client.get(reverse("dashboard"))
         self.assertContains(response, reverse("bug_add"))
 
-    def test_dashboard_displays_no_bugs_message(self):
+    def test_delete_link_visible_for_superuser(self):
+        superuser = create_superuser()
+        self.client.login(username="adminuser", password="AdminPass123!")
+        Bug.objects.create(
+            bug_title="Deletable Bug",
+            bug_description="Visible delete button test",
+            application_name="TestApp",
+            expected_behaviour="Expected",
+            actual_behaviour="Actual",
+            user_assigned_to=self.user,
+            completion_status="Not started",
+            complexity_level=1,
+            severity_level=1,
+        )
+        response = self.client.get(reverse("dashboard"))
+        self.assertContains(response, "Delete Bug")
+
+    def test_delete_link_not_visible_for_non_superuser(self):
+        Bug.objects.create(
+            bug_title="Non-deletable Bug",
+            bug_description="Hidden delete button test",
+            application_name="TestApp",
+            expected_behaviour="Expected",
+            actual_behaviour="Actual",
+            user_assigned_to=self.user,
+            completion_status="Not started",
+            complexity_level=1,
+            severity_level=1,
+        )
+        self.client.login(username="devuser", password="DevPass123!")
+        response = self.client.get(reverse("dashboard"))
+        self.assertNotContains(response, "Delete Bug")
+
+    def test_dashboard_displays_no_bugs_message_when_no_bugs(self):
         self.client.login(username="devuser", password="DevPass123!")
         response = self.client.get(reverse("dashboard"))
         self.assertContains(response, "No bugs to display.")

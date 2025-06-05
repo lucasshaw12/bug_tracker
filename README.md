@@ -48,6 +48,8 @@ Users in this application needs are proxies for staff members within a software 
 
 Preventing unauthorised access to the Bug dashboard, the bug_tracker view uses LoginMixin which checks for a valid user session. If none exists, the service redirects the user to the login template.
 
+Admins are classed as superusers. They have slighty more access that normal users. Admins can delete users and view the user index page which displays all currently registered users within the application. Normal users cannot do this.
+
 ### How to
 Bugs are added using the "Add bug" link in the navigation bar. Once created the bug will appear on the dashboard, containing all relevant details. Each card has an edit link to allow the bug details to be amended when neccesary. The list of bugs is sorted by `date_raised` with the oldest being at the top of the list.
 

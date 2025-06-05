@@ -4,6 +4,7 @@ from django.utils import timezone
 from django.views import View
 from django.views.generic import ListView, UpdateView, CreateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from accounts.mixins.custom_mixins import SuperUserRequiredMixin
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 
@@ -45,7 +46,7 @@ class BugUpdateView(LoginRequiredMixin, UpdateView):
     login_url = reverse_lazy("login")
 
 
-class BugDeleteView(LoginRequiredMixin, DeleteView):
+class BugDeleteView(SuperUserRequiredMixin, LoginRequiredMixin, DeleteView):
     model = Bug
     template_name = "bugs/bug_confirm_delete.html"
     success_url = reverse_lazy("dashboard")

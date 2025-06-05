@@ -2,7 +2,7 @@ from django.test import TestCase
 from django.urls import reverse
 from django.contrib.auth import get_user_model
 from bug_tracker.models import Bug
-from accounts.tests.user_factory import create_user
+from accounts.tests.user_factory import create_user, create_superuser
 
 
 class DashboardPageTests(TestCase):
@@ -75,7 +75,25 @@ class DashboardPageTests(TestCase):
         response = self.client.get(reverse("dashboard"))
         self.assertNotContains(response, 'class="btn btn-link ms-2">Edit</a>')
 
-    def test_edit_link_present_for_open_bug(self):
+    def test_edit_link_present_for_superuser_open_bug(self):
+        self.super_user = create_superuser()
+        self.client.login(username="adminuser", password="AdminPass123!")
+        Bug.objects.create(
+            bug_title="Sample Bug",
+            bug_description="A test bug",
+            application_name="TestApp",
+            expected_behaviour="Should work",
+            actual_behaviour="Doesn't work",
+            user_assigned_to=self.user,
+            completion_status="Not started",
+            complexity_level=1,
+            severity_level=1,
+        )
+        self.client.login(username="devuser", password="DevPass123!")
+        response = self.client.get(reverse("dashboard"))
+        self.assertContains(response, 'class="btn btn-link ms-2">Edit</a>')
+
+    def test_edit_link_not_visible_for_non_superuser(self):
         Bug.objects.create(
             bug_title="Sample Bug",
             bug_description="A test bug",

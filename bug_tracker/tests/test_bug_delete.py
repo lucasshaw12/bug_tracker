@@ -9,6 +9,7 @@ class BugDeleteTests(TestCase):
     def setUp(self):
         self.user = create_user()
         bug_data = open_bug_data(self.user)
+        bug_data["user_assigned_to"] = self.user  # pass actual instance instead of id
         self.bug = Bug.objects.create(**bug_data)
         self.client.login(username="devuser", password="DevPass123!")
 

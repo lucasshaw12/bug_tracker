@@ -1,10 +1,9 @@
 from django.test import TestCase
 from django.urls import reverse
-
 from bug_tracker.models import Bug
 
 
-class SimpleBugModelTests(TestCase):
+class BugModelTests(TestCase):
     def setUp(self):
         self.bug = Bug.objects.create(
             bug_title="My Bug",

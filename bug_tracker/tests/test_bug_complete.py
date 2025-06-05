@@ -1,19 +1,14 @@
 from functools import partial
-
 from django.test import TestCase
 from django.urls import reverse
 from django.contrib.auth import get_user_model
-
 from bug_tracker.models import Bug
+from accounts.tests.user_factory import create_user
 
 
 class BugActionTests(TestCase):
     def setUp(self):
-        User = get_user_model()
-        self.user = User.objects.create_user(
-            username="tester", email="tester@example.com", password="TestPass123!"
-        )
-
+        self.user = create_user()
         self.bug_data = {
             "bug_title": "Test Bug",
             "bug_description": "A sample bug",
@@ -28,6 +23,8 @@ class BugActionTests(TestCase):
 
         self.create_bug = partial(Bug.objects.create, **self.bug_data)
         self.bug = self.create_bug()
+
+        self.client.login(username="devuser", password="DevPass123!")
 
     def complete(self):
         return self.client.post(reverse("bug_complete", kwargs={"pk": self.bug.pk}))

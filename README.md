@@ -46,9 +46,10 @@ Custom user models have been implemented within the application. The purpose of 
 
 Users in this application needs are proxies for staff members within a software development organisation and its many teams. Besides Software Developers, these include, User Researchers, Interation Designers, Content Designs, Business Analysts and Project Managers. So additional fields such as user_role and team_name are required for this. The num_bugs_assigned field is useful for workload metrics and staff utilisation.
 
+Preventing unauthorised access to the Bug dashboard, the bug_tracker view uses LoginMixin which checks for a valid user session. If none exists, the service redirects the user to the login template.
 
 ### How to
-Bugs are added using the "Add bug" link in the navigation bar. Once created the bug will appear on the dashboard, containing all relevant details. Each card has an edit link to allow the bug details to be amended when neccesary.
+Bugs are added using the "Add bug" link in the navigation bar. Once created the bug will appear on the dashboard, containing all relevant details. Each card has an edit link to allow the bug details to be amended when neccesary. The list of bugs is sorted by `date_raised` with the oldest being at the top of the list.
 
 Whenever a bug is completed successfully, the `complete bug` button should be selected. This will highlight the whole card in green, change the badge to `fixed` and show the `completed_on` date and time. Similarly, if the bug is closed without fixing it, the `close bug` button should be selected and the badge will state `closed without fix`. The bug card will be greyed and will also include the `completed_on` details.
 

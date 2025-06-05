@@ -1,39 +1,31 @@
-from functools import partial
 from django.test import TestCase
 from django.urls import reverse
-from django.contrib.auth import get_user_model
-
 from bug_tracker.models import Bug
+from accounts.tests.user_factory import create_user
+from bug_tracker.tests.bug_factory import open_bug_data
 
 
 class BugDeleteTests(TestCase):
     def setUp(self):
-        User = get_user_model()
-        self.user = User.objects.create_user(
-            username="deleter", email="deleter@example.com", password="DeleteMe123!"
-        )
-        self.bug_data = {
-            "bug_title": "Bug to Delete",
-            "bug_description": "This bug will be deleted",
-            "application_name": "MyApp",
-            "expected_behaviour": "Should work",
-            "actual_behaviour": "Doesn't work",
-            "user_assigned_to": self.user,
-            "completion_status": "Not started",
-            "complexity_level": 1,
-            "severity_level": 1,
-        }
-        self.create_bug = partial(Bug.objects.create, **self.bug_data)
-        self.bug = self.create_bug()
+        self.user = create_user()
+        bug_data = open_bug_data(self.user)
+        self.bug = Bug.objects.create(**bug_data)
+        self.client.login(username="devuser", password="DevPass123!")
 
-    def delete(self):
-        return self.client.post(reverse("bug_delete", kwargs={"pk": self.bug.pk}))
-
-    def test_delete_bug_redirects(self):
-        response = self.delete()
+    def test_delete_bug_redirects_to_dashboard(self):
+        response = self.client.post(reverse("bug_delete", kwargs={"pk": self.bug.pk}))
         self.assertRedirects(response, reverse("dashboard"))
 
-    def test_delete_bug_removes_object(self):
-        self.delete()
+    def test_bug_is_deleted_from_database(self):
+        self.client.post(reverse("bug_delete", kwargs={"pk": self.bug.pk}))
         exists = Bug.objects.filter(pk=self.bug.pk).exists()
         self.assertFalse(exists)
+
+    def test_delete_view_requires_login(self):
+        self.client.logout()
+        response = self.client.post(reverse("bug_delete", kwargs={"pk": self.bug.pk}))
+        login_url = reverse("login")
+        expected_redirect = (
+            f"{login_url}?next={reverse('bug_delete', kwargs={'pk': self.bug.pk})}"
+        )
+        self.assertRedirects(response, expected_redirect)

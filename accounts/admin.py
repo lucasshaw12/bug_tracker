@@ -20,6 +20,8 @@ class CustomUserAdmin(UserAdmin):
         "user_role",
         "team_name",
         "num_bugs_assigned",
+        "is_staff",
+        "is_superuser",
     )
 
     # What fields to use in the user edit form

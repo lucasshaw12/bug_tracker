@@ -4,6 +4,8 @@ Install Python3 onto your machine using `brew install python`.
 
 Ensure `pipenv` is installed on your machine with `pip3 install pipenv`.
 
+When developing, ensure that the pipenv environment is activated using `pipenv shell` from the applications route directory `(bug_tracker/)`.
+
 To run the application from your local machine. From the `bug_tracker` root directory, enter the command `pipenv install -r requirements.txt`. This will install the required dependencies that are needed to run the application.
 
 Run the application in your local server using `python3 manage.py runserver`.

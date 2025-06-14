@@ -27,7 +27,7 @@ All required dependencies should be install when the Getting Started instruction
 
 1. Clone the repo
    ```sh
-   git clone
+   git clone https://github.com/lucasshaw12/bug_tracker
    ```
 2. Navigate into the project directory
    ```sh

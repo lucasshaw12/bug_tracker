@@ -39,6 +39,7 @@ sqlparse = "==0.4.3"
 virtualenv = "==20.24.6"
 whitenoise = "==6.2.0"
 psycopg2-binary = "*"
+pre-commit = "*"
 
 [dev-packages]
 

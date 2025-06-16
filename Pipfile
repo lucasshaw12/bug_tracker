@@ -29,7 +29,6 @@ numpy = "==2.0.0"
 packaging = "==21.3"
 pipenv = "==2023.11.15"
 platformdirs = "==3.11.0"
-psycopg2 = "==2.9.3"
 pycairo = "==1.27.0"
 pyparsing = "==3.0.9"
 python-dotenv = "==0.21.0"
@@ -39,6 +38,7 @@ rply = "==0.7.8"
 sqlparse = "==0.4.3"
 virtualenv = "==20.24.6"
 whitenoise = "==6.2.0"
+psycopg2-binary = "*"
 
 [dev-packages]
 

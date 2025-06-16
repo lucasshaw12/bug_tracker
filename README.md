@@ -1,4 +1,4 @@
-## Getting Started
+## Getting Started with development and running locally
 
 Install Python3 onto your machine using `brew install python`.
 
@@ -15,6 +15,9 @@ Run the application in your local server using `python3 manage.py runserver`.
 To access the Administrator database, visit `127.0.0.1:8000/admin/`. You can then create your own superuser starting with the command `python3 manage.py createsuperuser`. Use the credentials to access the database admin dashboard.
 
 The Admin app is used for manually managing all models within the application. This is Users and Bugs. New instances of these can created, existing instances can be modified and deleted.
+
+## Running the live site
+To run the live application, visis -
 
 ### Logging in
 

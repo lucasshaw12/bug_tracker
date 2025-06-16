@@ -17,7 +17,11 @@ To access the Administrator database, visit `127.0.0.1:8000/admin/`. You can the
 The Admin app is used for manually managing all models within the application. This is Users and Bugs. New instances of these can created, existing instances can be modified and deleted.
 
 ## Running the live site
-To run the live application, visis -
+To run the live application, visit -
+
+The application is named bug-tracker-production-application within the AWS instance.
+
+The live application was configured with Elastic Beanstalk and followed this tutorial - https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create-deploy-python-django.html#python-django-configure-for-eb
 
 ### Logging in
 

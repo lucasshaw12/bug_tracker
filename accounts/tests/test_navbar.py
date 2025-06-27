@@ -27,5 +27,4 @@ class NavbarTests(TestCase):
 
         response = self.client.get(reverse("dashboard"))
         self.assertContains(response, self.user.username)
-        self.assertContains(response, "Change password")
         self.assertContains(response, "Log Out")

@@ -1,5 +1,6 @@
 ## Getting Started with development and running locally
 
+<<<<<<< HEAD
 Install Python3 onto your macOS machine using `brew install python`.
 
 Ensure `pipenv` is installed on your machine with `pip3 install pipenv`.
@@ -17,6 +18,15 @@ Ensure `pipenv` is installed on your machine with `pip3 install pipenv`.
 Install PipFile dependencies `pipenv install`.
 
 Then ensure that the pipenv environment is activated using `pipenv shell` from the applications route directory `(bug_tracker/)`.
+=======
+Install Python3 onto your machine using `brew install python`.
+
+Ensure `pipenv` is installed on your machine with `pip3 install pipenv`.
+
+When developing, ensure that the pipenv environment is activated using `pipenv shell` from the applications route directory `(bug_tracker/)`.
+
+To run the application from your local machine. From the `bug_tracker` root directory, enter the command `pipenv install -r requirements.txt`. This will install the required dependencies that are needed to run the application.
+>>>>>>> origin/main
 
 Run the application in your local server using `python3 manage.py runserver`.
 
@@ -27,7 +37,11 @@ To access the Administrator database, visit `127.0.0.1:8000/admin/`. You can the
 The Admin app is used for manually managing all models within the application. This is Users and Bugs. New instances of these can created, existing instances can be modified and deleted.
 
 ## Running the live site
+<<<<<<< HEAD
 To run the live application, visit -
+=======
+To run the live application, visis -
+>>>>>>> origin/main
 
 ### Logging in
 
@@ -36,6 +50,19 @@ To run the live application, visit -
 All required dependencies should be install when the Getting Started instructions have been followed.
 
 
+<<<<<<< HEAD
+=======
+### Installation
+
+1. Clone the repo
+   ```sh
+   git clone https://github.com/lucasshaw12/bug_tracker
+   ```
+2. Navigate into the project directory
+   ```sh
+   cd bug_tracker
+   ```
+>>>>>>> origin/main
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -43,6 +70,7 @@ All required dependencies should be install when the Getting Started instruction
 
 ## Usage
 
+<<<<<<< HEAD
 ### Existing users
 Admin user
 username: admin
@@ -53,6 +81,9 @@ username: newuser1
 password: workworkwork
 
 ### Create your own user
+=======
+### Signing up
+>>>>>>> origin/main
 Sign up to create a user before you can interact with the application. After clicking 'sign up' an authentication token will be displayed within your terminal. Visit the given url to submit the token to verify your user. You MUST do this before you can sign in.
 
 ### Custom User model

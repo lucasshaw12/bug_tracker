@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-{# templates/registration/signup.html #}
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
-=======
-{% extends "base.html" %}
->>>>>>> origin/main
 {% block title %}Sign up{% endblock %}
 
 {% block content %}
@@ -14,54 +9,33 @@
     {{ form.non_field_errors }}
 
     <div class="form-group">
-<<<<<<< HEAD
       {{ form.username|as_crispy_field }}
-=======
-      {{ form.username.label_tag }}
-      {{ form.username }}
->>>>>>> origin/main
       {% for err in form.username.errors %}
         <div class="text-danger small">{{ err }}</div>
       {% endfor %}
     </div>
 
     <div class="form-group">
-<<<<<<< HEAD
       {{ form.email|as_crispy_field }}
-=======
-      {{ form.email.label_tag }}
-      {{ form.email }}
->>>>>>> origin/main
       {% for err in form.email.errors %}
         <div class="text-danger small">{{ err }}</div>
       {% endfor %}
     </div>
 
     <div class="form-group">
-<<<<<<< HEAD
       {{ form.password1|as_crispy_field }}
-=======
-      {{ form.password1.label_tag }}
-      {{ form.password1 }}
->>>>>>> origin/main
       {% for err in form.password1.errors %}
         <div class="text-danger small">{{ err }}</div>
       {% endfor %}
     </div>
 
     <div class="form-group">
-<<<<<<< HEAD
       {{ form.password2|as_crispy_field }}
-=======
-      {{ form.password2.label_tag }}
-      {{ form.password2 }}
->>>>>>> origin/main
       {% for err in form.password2.errors %}
         <div class="text-danger small">{{ err }}</div>
       {% endfor %}
     </div>
 
-<<<<<<< HEAD
     <div class="form-group">
       {{ form.user_role|as_crispy_field }}
       {% for err in form.user_role.errors %}
@@ -76,8 +50,6 @@
       {% endfor %}
     </div>
 
-=======
->>>>>>> origin/main
     <button type="submit" class="btn btn-success">Sign up</button>
   </form>
 {% endblock %}

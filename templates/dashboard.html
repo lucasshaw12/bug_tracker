@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block title %}
+    Bug Dashboard
+{% endblock title %}
+{% block content %}
+    <h1 class="mb-4">Bug Dashboard</h1>
+    <a href="{% url 'bug_add' %}" class="btn btn-primary mb-4">Create Bug</a>
+    {% if bug_list %}
+        <div class="row">
+            {% for bug in bug_list %}
+                <div class="col-sm-6 py-3">
+                    <div class="card h-100 {{ bug.status_class }}">
+                        <div class="card-header">
+                            <strong class="mt-1">{{ bug.bug_title }}</strong>
+                            <span class="badge bg-primary text-white p-1">{{ bug.completion_status }}</span>
+                            {% if not bug.is_closed %}
+                                <a href="{% url 'bug_edit' bug.pk %}" class="btn btn-link ms-2">Edit</a>
+                            {% endif %}
+                        </div>
+                        <div class="card-body">
+                            <p>
+                                <strong>Application:</strong> {{ bug.application_name }}
+                            </p>
+                            <p>
+                                <strong>Expected:</strong> {{ bug.expected_behaviour }}
+                            </p>
+                            <p>
+                                <strong>Actual:</strong> {{ bug.actual_behaviour }}
+                            </p>
+                            <p>
+                                <strong>Assigned to:</strong> {{ bug.user_assigned_to }}
+                            </p>
+                            <p>
+                                <strong>Complexity:</strong> {{ bug.complexity_level }}
+                            </p>
+                            <p>
+                                <strong>Severity:</strong> {{ bug.severity_level }}
+                            </p>
+                            <p>
+                                <strong>Raised on:</strong> {{ bug.date_raised }}
+                            </p>
+                            {% if bug.completion_status == 'Fixed' or bug.completion_status == 'Closed without fix' %}
+                                <p>
+                                    <strong>Completed on:</strong> {{ bug.completed_on }}
+                                </p>
+                            {% endif %}
+                        </div>
+                        <div class="card-footer">
+                            {% if bug.completion_status != 'Fixed' and bug.completion_status != 'Closed without fix' %}
+                                <form action="{% url 'bug_complete' bug.pk %}"
+                                      method="post"
+                                      style="display:inline">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-sm btn-success">Complete Bug</button>
+                                </form>
+                                <form action="{% url 'bug_close' bug.pk %}"
+                                      method="post"
+                                      style="display:inline">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-sm btn-secondary ms-2">Close Bug</button>
+                                </form>
+                            {% endif %}
+                            <a href="{% url 'bug_delete' bug.pk %}"
+                               class="btn btn-sm {{ bug.is_complete_status_class }}">Delete Bug</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No bugs to display.</p>
+    {% endif %}
+{% endblock content %}

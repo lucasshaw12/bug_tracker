@@ -14,7 +14,7 @@ Ensure `pipenv` is installed on your machine with `pip3 install pipenv`.
    cd bug_tracker
    ```
 
-Install PipFile dependencies `pipenv install`.
+Install PipFile dependencies `pipenv install` from the applications route directory (bug_tracker/).
 
 Then ensure that the pipenv environment is activated using `pipenv shell` from the applications route directory `(bug_tracker/)`.
 
